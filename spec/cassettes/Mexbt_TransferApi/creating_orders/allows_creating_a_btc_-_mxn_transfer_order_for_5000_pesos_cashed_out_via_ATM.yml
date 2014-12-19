@@ -1,0 +1,54 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://localhost:3000/v1/orders
+    body:
+      encoding: UTF-8
+      string: '{"in_currency":"btc","out_currency":"mxn","out_via":"atm","webhook":"http://requestb.in/11rzly71","sender_info":{},"recipient_info":{},"out":5000,"api_key":"e22a52802d6db99d524f51a93a413536","nonce":14189157550507,"signature":"94C7D4D1E024E178D955D63ED4536D19177A69AFE1106D0FEC956590DFB02891C7347D85F60960EDF9D9CA295CFA90A88EA455F3B28FD571914FED3CDCB35FE4"}'
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '357'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: 'OK '
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"e00e97c34919a5c1de7a0f64c8137a55"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 36dd8164-5eac-4e83-93f6-5484b149e9c1
+      X-Runtime:
+      - '1.763409'
+      Server:
+      - WEBrick/1.3.1 (Ruby/2.1.2/2014-05-08)
+      Date:
+      - Thu, 18 Dec 2014 15:15:56 GMT
+      Content-Length:
+      - '341'
+      Connection:
+      - Keep-Alive
+    body:
+      encoding: UTF-8
+      string: '{"id":6,"in":{"currency":"btc","amount":1.15173726},"out":{"currency":"mxn","amount":5000.0},"out_via":"atm","sender_info":null,"recipient_info":null,"withdraw_info":null,"quote_valid_until":1418916655,"deposit_info":{"address":"ByNafb7C39BB7JqdkSVFUPzJoGsumUA4ks"},"webhook":"http://requestb.in/11rzly71","confirmations":0,"status":"quote"}'
+    http_version: 
+  recorded_at: Thu, 18 Dec 2014 15:15:56 GMT
+recorded_with: VCR 2.9.3

@@ -1,0 +1,54 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://localhost:3000/v1/ping
+    body:
+      encoding: UTF-8
+      string: '{"api_key":"e22a52802d6db99d524f51a93a413536","nonce":14189139204916,"signature":"B50005D7C66BD97C4E0CC53B11D234D42DA9CF98E30D52553602B3DC8B0F5B0A1BBA73E35D65B63CB273D584F4DBC552ADAAE981D75DC4C1A3E6AAD4EA42A88B"}'
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '212'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: 'OK '
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"82380d1e263b6093f3c7535690fcdd75"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 68e4ae20-94ef-4e83-9d7e-4167e795859e
+      X-Runtime:
+      - '0.033339'
+      Server:
+      - WEBrick/1.3.1 (Ruby/2.1.2/2014-05-08)
+      Date:
+      - Thu, 18 Dec 2014 14:45:20 GMT
+      Content-Length:
+      - '11'
+      Connection:
+      - Keep-Alive
+    body:
+      encoding: UTF-8
+      string: '{"ok":true}'
+    http_version: 
+  recorded_at: Thu, 18 Dec 2014 14:45:20 GMT
+recorded_with: VCR 2.9.3
