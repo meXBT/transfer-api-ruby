@@ -14,14 +14,16 @@ module Mexbt
       @endpoint = endpoint
     end
 
-    def create_order(in_currency:, out_currency:, out_via:, webhook:, in_amount: 0, out_amount: 0, sender_info: {}, recipient_info: {})
+    def create_order(in_currency:, out_currency:, out_via:, webhook:, in_amount: 0, out_amount: 0,
+                     sender_info: {}, recipient_info: {}, skip_deposit_address_setup: false)
       params = {
         in_currency: in_currency,
         out_currency: out_currency,
         out_via: out_via,
         webhook: webhook,
         sender_info: sender_info,
-        recipient_info: recipient_info
+        recipient_info: recipient_info,
+        skip_deposit_address_setup: skip_deposit_address_setup
       }
       if in_amount > 0
         params[:in] = in_amount
@@ -35,6 +37,10 @@ module Mexbt
 
     def get_order(id)
       call("/orders/#{id}")
+    end
+
+    def modify_order(id, params)
+      call("/orders/#{id}/modify", params)
     end
 
     def ping
