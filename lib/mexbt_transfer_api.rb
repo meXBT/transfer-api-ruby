@@ -12,10 +12,14 @@ module Mexbt
       @api_secret = api_secret
       @client_id = client_id
       @endpoint = endpoint
+      raise "Api key cannot be null" if @api_key.nil?
+      raise "Api secret cannot be null" if @api_secret.nil?
+      raise "Client id cannot be null" if @client_id.nil?
     end
 
     def create_order(in_currency:, out_currency:, out_via:, webhook:, in_amount: 0, out_amount: 0,
                      sender_info: {}, recipient_info: {}, skip_deposit_address_setup: false)
+      raise "You must specify a value for either in or out" if in_amount.nil? && out_amount.nil?
       params = {
         in_currency: in_currency,
         out_currency: out_currency,
@@ -25,12 +29,20 @@ module Mexbt
         recipient_info: recipient_info,
         skip_deposit_address_setup: skip_deposit_address_setup
       }
-      if in_amount > 0
-        params[:in] = in_amount
-      elsif out_amount > 0
-        params[:out] = out_amount
-      else
-        raise "You must specify a value for either in or out"
+      amounts = {
+        in: in_amount,
+        out: out_amount
+      }
+      [:in, :out].each do |a|
+        amount = amounts[a]
+        if amount && amount.kind_of?(String)
+          amounts[a] = BigDecimal.new(amount)
+        end
+      end
+      if amounts[:in] > 0
+        params[:in] = amounts[:in]
+      elsif amounts[:out] > 0
+        params[:out] = amounts[:out]
       end
       call("/orders", params)
     end

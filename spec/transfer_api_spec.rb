@@ -30,6 +30,12 @@ describe Mexbt::TransferApi do
         "status"=>"quote"
       })
     end
+
+    context "validation" do
+      it "rejects orders without an in or out amount specified" do
+        expect {transfer_api.create_order(in_currency: 'btc', out_currency: 'mxn', out_via: 'atm', webhook: nil, in_amount: nil, out_amount: nil)}.to raise_error("You must specify a value for either in or out")
+      end
+    end
   end
 
   context "getting orders" do
