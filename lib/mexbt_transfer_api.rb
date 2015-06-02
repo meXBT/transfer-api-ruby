@@ -55,6 +55,10 @@ module Mexbt
       call("/orders/#{id}/modify", params)
     end
 
+    def refund_order(id, params)
+      call("/orders/#{id}/refund", params)
+    end
+
     def ping
       call("/ping")
     end
